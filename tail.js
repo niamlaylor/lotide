@@ -19,13 +19,3 @@ const tail = function(array) {
     return array.slice(1);
   }
 };
-
-const result = tail([1, 2, 3, 4]);
-
-const words = ['Yo Yo', 'Lighthouse', 'Labs'];
-tail(words);
-assertEqual(words.length, 3);
-
-assertEqual(result, [2, 3, 4]);
-assertEqual(result[0], 2);
-assertEqual(result.length, 3);
