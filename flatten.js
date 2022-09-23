@@ -32,7 +32,6 @@ const flatten = function(arrayToFlatten) {
   for (let i = 0; i < arrayToFlatten.length; i++) {
     const value = arrayToFlatten[i];
     if (!Array.isArray(value)) {
-      console.log(value);
       result.push(value);
     }
     else if (Array.isArray(value)) {
