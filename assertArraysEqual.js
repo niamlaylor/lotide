@@ -7,6 +7,7 @@ const eqArrays = function(arr1, arr2) {
       }
       else {
         matching = false;
+        break;
       }
     }
     return matching;

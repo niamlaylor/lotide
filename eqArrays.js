@@ -16,6 +16,7 @@ const eqArrays = function(arr1, arr2) {
       }
       else {
         matching = false;
+        break;
       }
     }
     return matching;
@@ -26,4 +27,4 @@ const eqArrays = function(arr1, arr2) {
 }
 assertEqual((eqArrays(["1", "2", "3"], ["1", "2", "3"])), true); // => true
 assertEqual((eqArrays(["1", "2", "3"], ["1", "2", 3])), false); // => true
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+assertEqual(eqArrays([1, 1, 3], [1, 2, 3]), true); // => should PASS
