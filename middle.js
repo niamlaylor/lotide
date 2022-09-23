@@ -31,12 +31,19 @@ const assertArraysEqual = function(array1, array2) {
   }
 };
 
-const without = function(source, itemsToRemove) {
+const middle = function(middleArray) {
   let result = [];
-  for (let i = 0; i < source.length; i++) {
-    const value = source[i];
-    if (!itemsToRemove.includes(value)) {
-      result.push(value);
-    }
-  } return result;
-};
+
+  if (middleArray.length % 2 > 0 && middleArray.length > 2) {
+    result.push(middleArray[(middleArray.length - 1) / 2]);
+  }
+  else if(middleArray.length % 2 === 0 && middleArray.length > 2) {
+    result.push(middleArray[Math.floor((middleArray.length - 1) / 2)]);
+    result.push(middleArray[Math.ceil((middleArray.length - 1) / 2)]);
+  }
+  else if (middleArray.length === 1 || middleArray.length === 2) {
+    result = [];
+  }
+  return result;
+}
+assertArraysEqual(middle([1, 2]), []);
