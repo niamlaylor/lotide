@@ -23,5 +23,6 @@ const countLetters = function(inputString) {
   return letterCounts;
   };
 
-console.log(countLetters("lighthouse in the house"));
-console.log(countLetters('LHL'));
+const result1 = countLetters("lighthouse in the house");
+assertEqual(result1['i'], 2);
+assertEqual(result1['h'], 4);
