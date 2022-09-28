@@ -1,3 +1,26 @@
+const eqArrays = function(arr1, arr2) {
+  let matching = false;
+  if ((arr1.length === arr2.length) && arr1.length > 0) {
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] === arr2[i]) {
+        matching = true;
+      }
+      else {
+        matching = false;
+        break;
+      }
+    }
+    return matching;
+  }
+  else if ((arr1.length === arr2.length) && arr1.length === 0){
+    matching = true;
+  }
+  else {
+    return matching;
+  }
+  return matching;
+};
+
 const eqObjects = function(object1, object2) {
   const object1Keys = Object.keys(object1);
   const object2Keys = Object.keys(object2);
@@ -35,8 +58,8 @@ const assertObjectsEqual = function(actual, expected) {
   }
 };
 
-const input1 = { a: '1', b: '2'};
-const input2 = { b: '2', a: '1'};
+const input1 = { a: '1', b: ['2', 'lol']};
+const input2 = { b: ['2', 'lol'], a: '1'};
 const input3 = { x: '22'};
 
 assertObjectsEqual(input1, input2);

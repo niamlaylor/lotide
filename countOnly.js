@@ -10,17 +10,17 @@ const assertEqual = function(actual, expected) {
 
 const countOnly = function(array, object) {
   let trueToCount = {};
-  const keys = Object.keys(object);
+  const keys = Object.keys(object); // Creating an array of the keys in object
 
-  for (let k = 0; k < keys.length; k++) {
+  for (let k = 0; k < keys.length; k++) { //this nested loop pushes only true AND keys that exist in array into my new object
     for (let n = 0; n < array.length; n++) {
       if (keys[k] === array[n] && object[keys[k]] === true) { //switch to == if we want to take in other data types
         trueToCount[keys[k]] = 0;
       }
     }
   }
-  const keysToCount = Object.keys(trueToCount);
-  for (let i = 0; i < keysToCount.length; i++) {
+  const keysToCount = Object.keys(trueToCount); //I'm now pulling the keys of the applicable properties
+  for (let i = 0; i < keysToCount.length; i++) { //This nested loop compares the keys we want to count and adds them up
     for (let x = 0; x < array.length; x++) {
       if (keysToCount[i] === array[x]) {
         trueToCount[keysToCount[i]] += 1;
