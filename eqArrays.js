@@ -1,24 +1,15 @@
 const eqArrays = function(arr1, arr2) {
-  let matching = false;
-  if ((arr1.length === arr2.length) && arr1.length > 0) {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === arr2[i]) {
-        matching = true;
-      }
-      else {
-        matching = false;
-        break;
-      }
+  let matching = true;
+  if (arr1.length !== arr2.length) {
+    matching = false;
+    return matching;
+  }
+  for (const value in arr1) {
+    if (arr1[value] !== arr2[value]) {
+      matching = false;
+      return matching;
     }
-    return matching;
-  }
-  else if ((arr1.length === arr2.length) && arr1.length === 0){
-    matching = true;
-  }
-  else {
-    return matching;
-  }
-  return matching;
+  } return matching;
 };
 
 module.exports = eqArrays;
