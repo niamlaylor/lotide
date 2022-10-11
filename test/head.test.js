@@ -1,8 +1,20 @@
+const assert = require('chai').assert;
 const head = require('../head');
-const assertEqual = require('../assertEqual')
 
-const test1 = head([1,2,3,4,5,6,7]);
-const test2 = head(['liam', 'testing', 'head'])
+describe('#head', () => {
+  it('returns 1 for [1, 2, 3]', () => {
+    assert.strictEqual(head([1, 2, 3]), 1);
+  });
+});
 
-assertEqual(test1, 1)
-assertEqual(test2, 'liam');
+describe('#head', () => {
+  it("returns 'liam' for ['liam', 'testing', 'head']", () => {
+    assert.strictEqual(head(['liam', 'testing', 'head']), 'liam');
+  });
+});
+
+describe('#head', () => {
+  it("returns 5 for [5]", () => {
+    assert.strictEqual(head([5]), 5);
+  });
+});
