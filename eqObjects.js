@@ -1,67 +1,40 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
-  }
-  else {
-    console.log(`🛑 Assertion Failed: ${actual} != ${expected}`);
-  }
-};
-const eqArrays = function(arr1, arr2) {
-  let matching = false;
-  if ((arr1.length === arr2.length) && arr1.length > 0) {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === arr2[i]) {
-        matching = true;
-      }
-      else {
-        matching = false;
-        break;
-      }
-    }
-    return matching;
-  }
-  else if ((arr1.length === arr2.length) && arr1.length === 0){
-    matching = true;
-  }
-  else {
-    return matching;
-  }
-  return matching;
-};
-
 const eqObjects = function(object1, object2) {
-  const object1Keys = Object.keys(object1);
-  const object2Keys = Object.keys(object2);
-  const numberOfKeys1 = Object.keys(object1).length;
-  const numberOfKeys2 = Object.keys(object2).length;
-  let numberMatching = 0;
-  let result = true;
+  let matching = true;
 
-  if (numberOfKeys1 !== numberOfKeys2) {
-    result = false;
-    return result;
+  if (Object.keys(object1).length !== Object.keys(object2).length) {
+    matching = false;
+    return matching;
   }
-
-  for (let i = 0; i < numberOfKeys1; i++) { // I still need to make array values work
-    if (object1[object1Keys[i]] !== object2[object1Keys[i]]) {
-      if (Array.isArray(object1[object1Keys[i]]) && Array.isArray(object2[object1Keys[i]])) {
-        result = eqArrays(object1[object1Keys[i]], object2[object1Keys[i]]);
+  for (const key in object1) {
+    if (Array.isArray(object1[key])) {
+      for (const value in object1[key]) {
+        if ((object1[key].length !== object2[key].length) || (object1[key][value] !== object2[key][value])) {
+          matching = false;
+          return matching;
+        }
       }
-      else {
-        result = false;
-        break;
-      }
+    } else if (object1[key] !== object2[key]) {
+      matching = false;
+      return matching;
     }
-  } return result;
-  };
+  } return matching;
+};
 
-const ab = { a: '1', b: '2', c: '5'};
-const ba = { b: '2', a: '1', c: '3'};
-assertEqual(eqObjects(ab, ba), false);
 
-const cd = { c: "1", d: ["2", 3], e: '1'};
-const dc = { e: '99', d: ["2", 3], c: "1" };
-const dc2 = { d: ["2", 3, 4, 5], c: "1" };
-assertEqual(eqObjects(cd, dc), false);
-assertEqual(eqObjects(dc, dc2), false);
+/*
+const ab = { a: "1", b: "2" };
+const ba = { b: "2", a: "1" };
+console.log(eqObjects(ab, ba)); // => true
+  
+const abc = { a: "1", b: "2", c: "3" };
+console.log(eqObjects(ab, abc)); // => false
 
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+console.log(eqObjects(cd, dc)); // => true
+
+const cd2 = { c: "1", d: ["2", 3, 4] };
+console.log(eqObjects(cd, cd2)); // => false
+*/
+
+module.exports = eqObjects;

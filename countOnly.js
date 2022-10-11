@@ -1,13 +1,3 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
-  }
-  else {
-    console.log(`🛑 Assertion Failed: ${actual} != ${expected}`);
-  }
-};
-
-
 const countOnly = function(array, object) {
   let trueToCount = {};
   const keys = Object.keys(object); // Creating an array of the keys in object
@@ -30,6 +20,7 @@ const countOnly = function(array, object) {
   return trueToCount;
 };
 
+/*
 const firstNames = [
   "Karl",
   "Salima",
@@ -48,3 +39,6 @@ assertEqual(result1["Jason"], 1);
 assertEqual(result1["Karima"], undefined);
 assertEqual(result1["Fang"], 2);
 assertEqual(result1["Agouhanna"], undefined);
+*/
+
+module.exports = countOnly;
